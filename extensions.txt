@@ -1,0 +1,13 @@
+anbuselvanrocky.bootstrap5-vscode
+austenc.laravel-blade-spacer
+coenraads.bracket-pair-colorizer-2
+ctf0.laravel-goto-controller
+ecmel.vscode-html-css
+emmanuelbeziat.vscode-great-icons
+formulahendry.auto-rename-tag
+negokaz.live-server-preview
+onecentlin.laravel-blade
+onecentlin.laravel5-snippets
+pkief.material-icon-theme
+ritwickdey.liveserver
+steoates.autoimport
