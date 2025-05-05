@@ -23,8 +23,23 @@
                             Edit Student
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('update', $student_single->id) }}" method="post">
+                            <form action="{{ route('update', $student_single->id) }}" method="post"
+                                enctype="multipart/form-data">
                                 @csrf
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Existing Photo</label>
+
+                                    <div> <img src="{{ asset('uploads/' . $student_single->photo) }}" alt="photo"
+                                            style="width: 100px;"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Upload Photo</label>
+                                    <input type="file" name="photo">
+
+                                    @error('photo')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Student Name</label>
                                     <input type="text" class="form-control" name="name"
