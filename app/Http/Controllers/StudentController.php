@@ -29,7 +29,6 @@ class StudentController extends Controller
         //    dd($final_name);
         $request->file('photo')->move(public_path('uploads/'), $final_name);
 
-
         $student = new Student();
         $student->photo = $final_name;
         $student->name = $request->name;
@@ -82,7 +81,12 @@ class StudentController extends Controller
     public function delete($id)
     {
         $student = Student::where('id', $id)->first();
+        if (file_exists(public_path('uploads' . $student->photo)) and !empty($student->photo)) {
+
+            unlink(public_path('uploads/' . $student->photo));
+        }
+
         $student->delete();
-        return redirect()->back()->with('success', 'Data is updated successfully.');
+        return redirect()->back()->with('success', 'Data is Deleted successfully.');
     }
 }
