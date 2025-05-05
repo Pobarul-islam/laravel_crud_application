@@ -41,8 +41,15 @@
                             Add Student
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('store') }}" method="post">
+                            <form action="{{ route('store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
+                                   <div class="mb-3">
+                                    <label for="" class="form-label">Student Photo</label>
+                                   <input type="file" name="photo">
+                                    @error('photo')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Student Name</label>
                                     <input type="text" class="form-control" name="name"
@@ -79,6 +86,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">Serial</th>
+                                        <th>Photo</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Action</th>
@@ -94,7 +102,10 @@
                                             <th class="row">
                                                 {{ $loop->iteration }}
                                             </th>
-                                            <th scope="row">1</th>
+                                              <td>
+                                                <img src="{{ asset('uploads/'.$item->photo) }}" alt="photo" style="width:100px;">
+                                            </td>
+                                          
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->email }}</td>
                                             <td>
